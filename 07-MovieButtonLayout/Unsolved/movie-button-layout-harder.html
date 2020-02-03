@@ -28,6 +28,10 @@
 
       <!-- Button triggers new movie to be added -->
       <input id="add-movie" type="submit" value="Add a Movie, Yo!">
+
+      <p> * Dynamically generate the initial buttons using jQuery <br>
+
+        * Allow users to create new buttons upon entering text in the textbox and clicking `Add a Movie Yo`</p>
     </form>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
@@ -36,16 +40,22 @@
 
       // Function for displaying movie data
       function renderButtons() {
-
         // YOUR CODE GOES HERE
-
+        $("#buttons-view").empty();
+        movies.forEach(movie => {
+          const movBtn = $("<button>");
+          $(movBtn).text(movie);
+          $("#buttons-view").append(movBtn);
+        })
       }
 
       // This function handles events where one button is clicked
-      $("#add-movie").on("click", function() {
-
-        // YOUR CODE GOES HERE
-
+      $("#add-movie").on("click", function (event) {
+        event.preventDefault();
+        const mov = $("#movie-input").val()
+        movies.push(mov);
+        $("#movie-input").val("");
+        renderButtons();
       });
 
       // Calling the renderButtons function to display the initial list of movies
