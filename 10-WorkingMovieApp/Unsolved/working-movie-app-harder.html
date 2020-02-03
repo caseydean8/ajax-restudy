@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Favorite Movies</title>
+  <title>Final Favorite Movies</title>
   <style type="text/css">
     button,
     div,
@@ -17,7 +17,7 @@
 <body>
 
   <div class="container">
-    <h1>Movie Search</h1>
+    <h1>Final Movie Search</h1>
 
     <!-- Rendered buttons will get dumped Here  -->
     <div id="buttons-view"></div>
@@ -33,6 +33,18 @@
     <!-- Movies will get dumped here -->
     <div id="movies-view"></div>
 
+    <p>complete the application so that various snippets of information about your movie are displayed underneath.<br>
+      As a suggestion, display at least each of the following:
+      <br>
+      * Movie Poster
+      <br>
+      * Rating
+      <br>
+      * Release Date
+      <br>
+      * Plot
+    </p>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
       // Initial array of movies
@@ -40,7 +52,7 @@
 
       // displayMovieInfo function re-renders the HTML to display the appropriate content
       function displayMovieInfo() {
-
+        $("#movies-view").empty();
         var movie = $(this).attr("data-name");
         var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
 
@@ -48,10 +60,17 @@
         $.ajax({
           url: queryURL,
           method: "GET"
-        }).then(function(response) {
-
+        }).then(function (response) {
+          console.log(response);
           // YOUR CODE GOES HERE!!!
-
+          const poster = $("<img>").attr("src", response.Poster);
+          const rated = $("<p>").text(`Rated ${response.Rated}`);
+          const released = $("<p>").text(`Released ${response.Released}`);
+          const plot = $("<p>").text(`Plot summary: ${response.Plot}`);
+          $("#movies-view").append(poster, rated, released, plot);
+          
+          // $("#movies-view").append(rated)
+         
         });
 
       }
@@ -81,14 +100,14 @@
       }
 
       // This function handles events where the add movie button is clicked
-      $("#add-movie").on("click", function(event) {
+      $("#add-movie").on("click", function (event) {
         event.preventDefault();
         // This line of code will grab the input from the textbox
         var movie = $("#movie-input").val().trim();
 
         // The movie from the textbox is then added to our array
         movies.push(movie);
-
+        $("#movie-input").val("");
         // Calling renderButtons which handles the processing of our movie array
         renderButtons();
 

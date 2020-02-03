@@ -49,6 +49,7 @@
           url: queryUrl,
           method: "GET"
         }).then(function(response) {
+          console.log(response);
           const display = JSON.stringify(response);
           $(jsonHold).text(display);
           $("#movie-form").append(jsonHold);
