@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Favorite Movies</title>
+  <title> Unsolved Favorite Movies</title>
   <style type="text/css">
     button,
     div,
@@ -19,7 +19,7 @@
   <div class="container">
     <h1>Movie Search</h1>
 
-     <!-- Rendered Buttons will get Dumped Here  -->
+    <!-- Rendered Buttons will get Dumped Here  -->
     <div id="buttons-view"></div>
 
     <form id="movie-form">
@@ -30,6 +30,14 @@
       <input id="add-movie" type="submit" value="Add a Movie, Yo!">
     </form>
 
+    <p>## Instructions <br>
+
+      * Using the starter code provided, create the missing code snippets inside the `alertMovieName` function necessary
+      to capture the movie name for both the original and new buttons.
+      <br>
+      <br>
+      * **HINT:** You should use HTML `data-*` attributes, `this` and the jQuery `.attr()` method.</p>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
       // Initial array of movies
@@ -39,7 +47,7 @@
       function alertMovieName() {
 
         // YOUR CODE GOES HERE!!!
-
+        alert($(this).attr("data-name"))
       }
 
       // Function for displaying movie data
@@ -67,7 +75,7 @@
       }
 
       // This function handles events where one button is clicked
-      $("#add-movie").on("click", function(event) {
+      $("#add-movie").on("click", function (event) {
         event.preventDefault();
 
         // This line grabs the input from the textbox

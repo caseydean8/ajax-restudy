@@ -30,6 +30,10 @@
       <input id="add-movie" type="submit" value="Add a Movie, Yo!">
     </form>
 
+    <h3>* Using the Starter code provided, create the missing code snippets inside the `displayMovieInfo()` function necessary to display JSON data about each movie.
+<br>
+      * **HINT:** You should use HTML `data-` attributes.</h3>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
       // Initial array of movies
@@ -37,9 +41,18 @@
 
       // Function for dumping the JSON content for each button into the div
       function displayMovieInfo() {
-
+        const movieData = $(this).data("name");
+        const queryUrl = `https://www.omdbapi.com/?t=${movieData}&apikey=trilogy`
         // YOUR CODE GOES HERE!!! HINT: You will need to create a new div to hold the JSON.
-
+        const jsonHold = $("<div>");
+        $.ajax({
+          url: queryUrl,
+          method: "GET"
+        }).then(function(response) {
+          const display = JSON.stringify(response);
+          $(jsonHold).text(display);
+          $("#movie-form").append(jsonHold);
+        })
       }
 
       // Function for displaying movie data
