@@ -24,9 +24,9 @@
             * with a quote said by them -->
 
     <!-- **************************************** -->
-
-    <!-- YOUR BUTTONS GO HERE!!!!!! Delete this comment and put your buttons here.  -->
-
+      <button data-person="donald trump">MAGA</button>
+      <button data-person="kanye west">touch the sky</button>
+      <button data-person="mel gibson">I'm crazy</button>
     <!-- **************************************** -->
 
 
@@ -52,7 +52,7 @@
       })
         .then(function(response) {
           var results = response.data;
-
+          console.log(results);
           for (var i = 0; i < results.length; i++) {
             var gifDiv = $("<div>");
 

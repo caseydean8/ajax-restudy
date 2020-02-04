@@ -24,20 +24,20 @@
         method: "GET"
       })
 
-        //
+        // Return JSON data as "response"
         .then(function(response) {
 
-          //
+          // Create variable for image in response
           var imageUrl = response.data.image_original_url;
 
-          //
+          // Create markdown to hold an image
           var catImage = $("<img>");
 
-          //
+          // Add src and alt attribute to image tag
           catImage.attr("src", imageUrl);
           catImage.attr("alt", "cat image");
 
-          //
+          // Prepend image tag to #images div
           $("#images").prepend(catImage);
         });
     });
