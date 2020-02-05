@@ -30,10 +30,8 @@
 
       // ============== FILL IN CODE HERE FOR STEP TWO =========================
 
-      const state = $(this).data("state");
-      console.log(state);
-      console.log($(this).data("animate"));
-
+      const state = $(this).attr("data-state");
+   
       // =============================================
 
       // STEP THREE: Check if the variable state is equal to 'still',
@@ -43,15 +41,12 @@
       // If state is equal to 'animate', then update the src attribute of this
       // image to it's data-still value and update the data-state attribute to 'still'
       // ============== FILL IN CODE HERE FOR STEP THREE =========================
+      const stop = $(this).data("still");
+      const play = $(this).data("animate");
 
-      if (state === "still") {
-        let play = $(this).data("animate");
-        $(this).attr("src", play);
-        $(this).attr("data-state", "animate");
-      } else {
-        $(this).attr("src", "data-still");
-        $(this).data("state", "still");
-      }
+      state === "still" ?
+        $(this).attr({ "src": play, "data-state": "animate" }) :
+        $(this).attr({ "src": stop, "data-state": "still" });
 
       // ==============================================
 
