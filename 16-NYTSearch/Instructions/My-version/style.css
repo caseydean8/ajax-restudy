@@ -1,0 +1,28 @@
+.parent {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1.5fr 4fr 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  height: 100vh;
+  grid-template-areas:
+    "header"
+    "input"
+    "articles";
+}
+
+.div1 {
+  grid-area: header;
+  background: #4d6de3;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-content: center;
+  margin: 0 auto;
+}
+.div2 {
+  grid-area: input;
+}
+.div3 {
+  grid-area: articles;
+}
