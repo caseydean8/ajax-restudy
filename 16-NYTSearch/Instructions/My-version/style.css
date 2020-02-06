@@ -82,6 +82,13 @@ form {
   margin: 1em;
 }
 
+button {
+  margin: 1em 0;
+  padding: .5em;
+  font-size: 1.0em;
+  border: solid 1px black;
+  border-radius: 0.5em;
+}
 /* Font-Family: 'Old Standard TT', Serif;
 Font-Size: 48px;
 Font-Family: 'Rubik', Sans-Serif;
