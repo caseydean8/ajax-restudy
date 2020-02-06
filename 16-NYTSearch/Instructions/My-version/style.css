@@ -1,10 +1,10 @@
 .parent {
   display: grid;
-  grid-template-columns: 1fr;
   grid-template-rows: 1.5fr 4fr 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
   height: 100vh;
+  background: #f1fcfd;
   grid-template-areas:
     "header"
     "input"
@@ -14,15 +14,61 @@
 .div1 {
   grid-area: header;
   background: #4d6de3;
-  height: 100%;
-  width: 100%;
-  justify-content: center;
-  align-content: center;
-  margin: 0 auto;
+  /* height: 100%; */
+  /* width: 100%; */
+  text-align: center;
+  /* justify-content: center;
+  /* align-content: center; */
+  margin: 0;
 }
+
 .div2 {
   grid-area: input;
+  display: block;
+  /* display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-areas:
+    "search"
+    "records"
+    "startdate"
+    "enddate"; */
 }
+
+/* #search-term {
+  grid-area: search;
+}
+
+#records {
+  grid-area: records;
+}
+
+#start {
+  grid-area: startdate;
+}
+
+#end {
+  grid-area: enddate;
+} */
+
 .div3 {
   grid-area: articles;
+  background: #c7eeff;
+}
+
+input {
+  /* padding: 1em; */
+  width: 28em;
+  margin: 1em;
+  padding: 1em;
+  border: solid 1px black;
+}
+
+label {
+  margin: 1em;
+  /* padding: 1em; */
+}
+
+form {
+  margin: 1%;
 }
