@@ -23,5 +23,10 @@ const apiGet = (search) => {
 $("button").on("click", function(event) {
   event.preventDefault();
   let search = $("#search-term").val();
-  apiGet(search);
+  startDate = $("#start").val();
+  startDate = startDate.replace(/-/g, "");
+  endDate = $("#end").val()
+  endDate = endDate.replace(/-/g, "");
+  console.log(startDate, endDate);
+  // apiGet(search);
 });
