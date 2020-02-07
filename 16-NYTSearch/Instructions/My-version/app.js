@@ -5,28 +5,38 @@ const apiKey = "BkLkeT4lQuDfhKNLm9yIbUKXgjkL5auf";
 
 // /articlesearch.json?q={query}&fq={filter}
 // const queryUrl = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${search}&api-key=${apiKey}`;
-let startDate;
-let endDate;
+// let startDate;
+// let endDate;
 
-const apiGet = (search) => {
-  const queryUrl = `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${search}&facet_fields=source&facet=true&begin_date=20160101&end_date=20160131&api-key=${apiKey}`;
+const apiGet = (search, startDate, endDate) => {
+  (startDate) ? startDate = `&begin_date=${startDate}` : startDate = '';
+  (endDate) ? endDate = `&end_date=${endDate}` : endDate = '';
+  const queryUrl = `https://api.nytimes.com/svc/search/v2/articlesearch.json?&q=${search}&facet_fields=source&facet=true${startDate}${endDate}&fl=web_url&api-key=${apiKey}`;
   console.log(queryUrl);
 
   $.ajax({
     url: queryUrl,
     method: "GET"
-  }).then(function(response) {
-    console.log(response);
+  }).then(function(res) {
+    console.log(res);
+    console.log(res.response.docs);
+    const result = [];
+    // let docu = res.reponse.docs[0].web_url;
   })
 };
 
 $("button").on("click", function(event) {
   event.preventDefault();
   let search = $("#search-term").val();
-  startDate = $("#start").val();
-  startDate = startDate.replace(/-/g, "");
-  endDate = $("#end").val()
-  endDate = endDate.replace(/-/g, "");
+  let startDate = $("#start").val().replace(/-/g, "");
+  let endDate = $("#end").val().replace(/-/g, "")
   console.log(startDate, endDate);
-  // apiGet(search);
+  apiGet(search, startDate, endDate);
 });
+
+const articleDisplay = () => {
+  artArr = [];
+  for (let doc of docs) {
+
+  }
+}
